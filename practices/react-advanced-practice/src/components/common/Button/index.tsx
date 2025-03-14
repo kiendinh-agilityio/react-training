@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Button as ButtonBase } from '@radix-ui/themes';
 
 // Import types
@@ -12,28 +13,30 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const Button = ({
-  children,
-  variant = ButtonVariant.Primary,
-  isDisabled,
-  className,
-  onClick,
-  ariaLabel,
-}: ButtonProps) => {
-  const baseClass = ` 
-    px-[22px] py-2.5 font-bold rounded-xl ${isDisabled ? 'primary opacity-50 cursor-not-allowed' : `${variant} cursor-pointer`}
-  `;
+const Button = memo(
+  ({
+    children,
+    variant = ButtonVariant.Primary,
+    isDisabled,
+    className,
+    onClick,
+    ariaLabel,
+  }: ButtonProps) => {
+    const baseClass = `px-[22px] py-2.5 font-bold rounded-xl ${
+      isDisabled ? 'primary opacity-50 cursor-not-allowed' : `${variant} cursor-pointer`
+    }`;
 
-  return (
-    <ButtonBase
-      className={`${baseClass} ${className}`}
-      aria-label={ariaLabel}
-      onClick={onClick}
-      disabled={isDisabled}
-    >
-      {children}
-    </ButtonBase>
-  );
-};
+    return (
+      <ButtonBase
+        className={`${baseClass} ${className}`}
+        aria-label={ariaLabel}
+        onClick={onClick}
+        disabled={isDisabled}
+      >
+        {children}
+      </ButtonBase>
+    );
+  },
+);
 
 export default Button;
