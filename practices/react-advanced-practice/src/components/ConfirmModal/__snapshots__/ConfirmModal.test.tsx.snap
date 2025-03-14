@@ -20,9 +20,7 @@ exports[`ConfirmModal Component should match snapshot 1`] = `
       />
     </svg>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   absolute right-0 top-0 hover:tertiary hover:rounded-full justify-center w-[20px] h-[20px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer absolute right-0 top-0 hover:tertiary hover:rounded-full justify-center w-[20px] h-[20px]"
       data-accent-color=""
     >
       <svg
@@ -47,17 +45,13 @@ exports[`ConfirmModal Component should match snapshot 1`] = `
       class="rt-Flex rt-r-ai-center rt-r-jc-center gap-6"
     >
       <button
-        class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl danger cursor-pointer
-   undefined"
+        class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl danger cursor-pointer undefined"
         data-accent-color=""
       >
         Yes, I'm sure
       </button>
       <button
-        class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl tertiary cursor-pointer
-   undefined"
+        class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl tertiary cursor-pointer undefined"
         data-accent-color=""
       >
         No, Cancel
