@@ -79,9 +79,7 @@ exports[`AuthForm Component calls onSubmit with valid data on signin 1`] = `
       </div>
     </div>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
       data-accent-color=""
     >
       Sign In
@@ -182,9 +180,7 @@ exports[`AuthForm Component calls onSubmit with valid data on signin 2`] = `
       </div>
     </div>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary opacity-50 cursor-not-allowed
-   mt-9 w-[350px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary opacity-50 cursor-not-allowed mt-9 w-[350px]"
       data-accent-color=""
       data-disabled="true"
       disabled=""
@@ -335,9 +331,7 @@ exports[`AuthForm Component matches the snapshot for signin 1`] = `
       </div>
     </div>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
       data-accent-color=""
     >
       Sign In
@@ -462,9 +456,7 @@ exports[`AuthForm Component matches the snapshot for signup 1`] = `
       </div>
     </div>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
       data-accent-color=""
     >
       Sign Up
@@ -575,9 +567,7 @@ exports[`AuthForm Component shows an error when submitting an empty form 1`] = `
       </div>
     </div>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
       data-accent-color=""
     >
       Sign In
