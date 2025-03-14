@@ -323,9 +323,7 @@ exports[`Sidebar Component should match snapshot 1`] = `
       Please check our docs
     </p>
     <button
-      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer
-   undefined"
+      class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer undefined"
       data-accent-color=""
     >
       DOCUMENTATION
