@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 
 // Import common icons
 import { MoonIcon, SunIcon } from '@/components/common/Icons';
@@ -17,22 +17,12 @@ const SwitchTheme = () => {
 
   // Update theme when it changes
   useEffect(() => {
-    if (theme === ThemeMode.Dark) {
-      document.documentElement.classList.add(ThemeMode.Dark);
-    } else {
-      document.documentElement.classList.remove(ThemeMode.Dark);
-    }
+    document.documentElement.classList.toggle(ThemeMode.Dark, theme === ThemeMode.Dark);
+  }, [theme]);
 
-    // Call the setTheme prop to update the external theme state
-    setTheme(theme);
+  const handleToggleTheme = useCallback(() => {
+    setTheme(theme === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
   }, [theme, setTheme]);
-
-  const handleToggleTheme = () => {
-    const newTheme = theme === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light;
-
-    // This will trigger the useEffect to update the DOM
-    setTheme(newTheme);
-  };
 
   return (
     <Button
