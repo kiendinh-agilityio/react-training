@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { PurityIcon } from '@/components/common/Icons';
 
 // import constants
@@ -9,7 +10,7 @@ interface LogoProps {
   color?: 'primary' | 'secondary';
 }
 
-const Logo = ({ href, color = 'primary', ariaLabel = 'Logo' }: LogoProps) => {
+const Logo = memo(({ href, color = 'primary', ariaLabel = 'Logo' }: LogoProps) => {
   const fillColor = color === 'primary' ? COLORS_LOGO.PRIMARY : COLORS_LOGO.SECONDARY;
 
   return (
@@ -17,6 +18,6 @@ const Logo = ({ href, color = 'primary', ariaLabel = 'Logo' }: LogoProps) => {
       <PurityIcon fillColor={fillColor} />
     </a>
   );
-};
+});
 
 export default Logo;
