@@ -1,4 +1,6 @@
 import { memo } from 'react';
+
+// Import radix ui
 import { Button as ButtonBase } from '@radix-ui/themes';
 
 // Import types
