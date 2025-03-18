@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
 // Import radix ui
 import { Table } from '@radix-ui/themes';
@@ -18,41 +18,43 @@ export interface AuthorTableProps {
   onDeleteAuthor: (id: string) => void;
 }
 
-const AuthorTable = ({ authors, onEditAuthor, onDeleteAuthor }: AuthorTableProps) => {
-  const renderTableHeaderContent = useMemo(
-    () =>
-      TABLE_TITLES.map((title) => (
-        <Table.ColumnHeaderCell key={title} className="py-3.5 text-sm">
-          {title}
-        </Table.ColumnHeaderCell>
-      )),
-    [],
-  );
+const AuthorTable = memo(
+  ({ authors, onEditAuthor, onDeleteAuthor }: AuthorTableProps) => {
+    const renderTableHeaderContent = useMemo(
+      () =>
+        TABLE_TITLES.map((title) => (
+          <Table.ColumnHeaderCell key={title} className="py-3.5 text-sm">
+            {title}
+          </Table.ColumnHeaderCell>
+        )),
+      [],
+    );
 
-  const renderTableBodyContent = useMemo(
-    () =>
-      authors.map((author) => (
-        <AuthorItem
-          key={author.id}
-          author={author}
-          onEdit={onEditAuthor}
-          onDelete={onDeleteAuthor}
-        />
-      )),
-    [authors, onEditAuthor, onDeleteAuthor],
-  );
+    const renderTableBodyContent = useMemo(
+      () =>
+        authors.map((author) => (
+          <AuthorItem
+            key={author.id}
+            author={author}
+            onEdit={onEditAuthor}
+            onDelete={onDeleteAuthor}
+          />
+        )),
+      [authors, onEditAuthor, onDeleteAuthor],
+    );
 
-  return (
-    <Table.Root className="w-full">
-      <Table.Header>
-        <Table.Row className="font-bold text-base">
-          {renderTableHeaderContent}
-          <Table.ColumnHeaderCell className="w-32 py-3.5"></Table.ColumnHeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>{renderTableBodyContent}</Table.Body>
-    </Table.Root>
-  );
-};
+    return (
+      <Table.Root className="w-full">
+        <Table.Header>
+          <Table.Row className="font-bold text-base">
+            {renderTableHeaderContent}
+            <Table.ColumnHeaderCell className="w-32 py-3.5"></Table.ColumnHeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>{renderTableBodyContent}</Table.Body>
+      </Table.Root>
+    );
+  },
+);
 
 export default AuthorTable;
