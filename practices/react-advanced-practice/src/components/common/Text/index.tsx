@@ -1,4 +1,6 @@
-// Import radix ui
+import { memo } from 'react';
+
+// Import radix UI
 import { Text as TextBase, TextProps } from '@radix-ui/themes';
 
 // Import types
@@ -9,16 +11,20 @@ type TextBaseProps = {
   size?: TextSize;
 } & TextProps;
 
-const Text = ({
-  children,
-  size = TextSize.Small,
-  as = 'p',
-  weight = 'regular',
-  className = '',
-}: TextBaseProps) => (
-  <TextBase as={as} weight={weight} className={`${size} ${className}`}>
-    {children}
-  </TextBase>
+const Text = memo(
+  ({
+    children,
+    size = TextSize.Small,
+    as = 'p',
+    weight = 'regular',
+    className = '',
+  }: TextBaseProps) => {
+    return (
+      <TextBase as={as} weight={weight} className={`${size} ${className}`}>
+        {children}
+      </TextBase>
+    );
+  },
 );
 
 export default Text;
