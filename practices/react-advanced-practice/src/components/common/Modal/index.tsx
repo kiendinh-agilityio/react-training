@@ -1,3 +1,5 @@
+import { memo, useCallback } from 'react';
+
 // Import radix ui
 import { Flex } from '@radix-ui/themes';
 
@@ -7,11 +9,17 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal = ({ children, className, onClose }: ModalProps) => {
-  const handleOverlayClick = () => onClose();
+const Modal = memo(({ children, className = '', onClose }: ModalProps) => {
+  const handleOverlayClick = useCallback(() => {
+    onClose();
+  }, [onClose]);
 
-  const handleStopPropagation = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-    event.stopPropagation();
+  const handleStopPropagation = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      event.stopPropagation();
+    },
+    [],
+  );
 
   return (
     <Flex
@@ -29,6 +37,6 @@ const Modal = ({ children, className, onClose }: ModalProps) => {
       </Flex>
     </Flex>
   );
-};
+});
 
 export default Modal;
