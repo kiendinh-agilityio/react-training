@@ -10,15 +10,7 @@ import { Box, Flex } from '@radix-ui/themes';
 import { SearchIcon } from '@/components/common/Icons';
 
 // import common components
-import {
-  Logo,
-  Heading,
-  Input,
-  Button,
-  LoadingSpinner,
-  Text,
-  Toast,
-} from '@/components/common';
+import { Heading, Input, Button, LoadingSpinner, Text, Toast } from '@/components/common';
 
 // Import components
 import { Sidebar, AuthorTable } from '@/components';
@@ -30,14 +22,7 @@ import Header from './Header';
 import { Footer } from '@/layouts';
 
 // Import types
-import {
-  ButtonVariant,
-  TextSize,
-  Author,
-  Notification,
-  QueryKey,
-  ThemeMode,
-} from '@/types';
+import { ButtonVariant, TextSize, Author, Notification, QueryKey } from '@/types';
 
 // Import services
 import {
@@ -52,9 +37,6 @@ const Modal = lazy(() => import('@/components/common/Modal'));
 const AuthorForm = lazy(() => import('@/components/AuthorForm'));
 const ConfirmModal = lazy(() => import('@/components/ConfirmModal'));
 
-// Import Zustand store
-import { useThemeStore } from '@/stores';
-
 // Import hooks
 import { useToast, useSearch, useModal } from '@/hooks';
 
@@ -63,8 +45,6 @@ import { MESSAGE_SUCCESS, MESSAGE_ERROR } from '@/constants';
 
 const Home = () => {
   const queryClient = useQueryClient();
-
-  const { theme } = useThemeStore();
 
   const { toastMessage, toastType, isToastOpen, handleShowToast, handleCloseToast } =
     useToast();
@@ -158,19 +138,7 @@ const Home = () => {
   return (
     <Box className="bg-tertiary dark:bg-dark">
       <Flex className="min-h-screen pt-[30px] pr-[22px] pb-[23px]">
-        <Box>
-          <Flex
-            justify="center"
-            align="center"
-            className="mb-[22px] gap-12 gradient-border pb-7"
-          >
-            <Logo
-              color={theme === ThemeMode.Dark ? 'secondary' : 'primary'}
-              href="/home"
-            />
-          </Flex>
-          <Sidebar />
-        </Box>
+        <Sidebar />
         <Flex direction="column" justify="between" className="w-full">
           <Header currentPage="Tables" />
           <Box className="bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light">
