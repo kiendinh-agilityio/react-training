@@ -5,7 +5,11 @@ import { DashboardIcon } from '@/components/common/Icons';
 
 // Mock IconWrapper component
 jest.mock('@/components/common/', () => ({
-  IconWrapper: jest.fn(({ icon }) => <div data-testid="icon-wrapper">{icon}</div>),
+  IconWrapper: jest.fn(({ icon, active }) => (
+    <div data-testid="icon-wrapper" data-active={active}>
+      {icon}
+    </div>
+  )),
 }));
 
 describe('SidebarItem', () => {
@@ -32,7 +36,7 @@ describe('SidebarItem', () => {
     expect(screen.getByRole('listitem')).toHaveClass('bg-white text-dark');
   });
 
-  it('applies hover styles on mouse enter', () => {
+  it('applies hover styles on mouse enter and removes on mouse leave', () => {
     render(<SidebarItem {...defaultProps} />);
     const listItem = screen.getByRole('listitem');
 
@@ -49,5 +53,27 @@ describe('SidebarItem', () => {
       expect.objectContaining({ active: true }),
       expect.any(Object),
     );
+  });
+
+  it('updates icon color on hover', () => {
+    render(<SidebarItem {...defaultProps} />);
+    const listItem = screen.getByRole('listitem');
+    const iconWrapper = screen.getByTestId('icon-wrapper');
+
+    fireEvent.mouseEnter(listItem);
+    expect(iconWrapper).toHaveAttribute('data-active', 'true');
+
+    fireEvent.mouseLeave(listItem);
+    expect(iconWrapper).toHaveAttribute('data-active', 'false');
+  });
+
+  it('does not re-render unnecessarily when props do not change', () => {
+    const { rerender } = render(<SidebarItem {...defaultProps} />);
+    const listItemBefore = screen.getByRole('listitem');
+
+    rerender(<SidebarItem {...defaultProps} />);
+    const listItemAfter = screen.getByRole('listitem');
+
+    expect(listItemBefore).toBe(listItemAfter);
   });
 });
