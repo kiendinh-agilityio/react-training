@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 
 // Import radix-ui
 import { Box, Table } from '@radix-ui/themes';
@@ -30,9 +30,9 @@ interface AuthorItemProps {
 const AuthorItem = memo(({ author, onEdit, onDelete }: AuthorItemProps) => {
   const { id, avatarUrl, name, email, roles, position, status, date } = author;
 
-  const handleEditClick = useCallback(() => onEdit(author), [onEdit, author]);
+  const handleEditClick = () => onEdit(author);
 
-  const handleDeleteClick = useCallback(() => onDelete(id), [onDelete, id]);
+  const handleDeleteClick = () => onDelete(id);
 
   return (
     <Table.Row key={id} className="text-sm">
