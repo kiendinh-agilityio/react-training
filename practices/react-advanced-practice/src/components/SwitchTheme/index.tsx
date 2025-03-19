@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { memo, useEffect, useCallback } from 'react';
 
 // Import common icons
 import { MoonIcon, SunIcon } from '@/components/common/Icons';
@@ -12,7 +12,7 @@ import { ButtonVariant, ThemeMode } from '@/types';
 // Import store
 import { useThemeStore } from '@/stores';
 
-const SwitchTheme = () => {
+const SwitchTheme = memo(() => {
   const { theme, setTheme } = useThemeStore();
 
   // Update theme when it changes
@@ -34,6 +34,6 @@ const SwitchTheme = () => {
       {theme === ThemeMode.Light ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
-};
+});
 
 export default SwitchTheme;
