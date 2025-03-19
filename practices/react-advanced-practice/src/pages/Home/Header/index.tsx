@@ -27,7 +27,7 @@ interface HeaderProps {
   currentPage: string;
 }
 
-const Header = ({ currentPage }: HeaderProps) => {
+const Header = memo(({ currentPage }: HeaderProps) => {
   const navigate = useNavigate();
 
   const handleLogout = useCallback(() => {
@@ -58,6 +58,6 @@ const Header = ({ currentPage }: HeaderProps) => {
       </Flex>
     </header>
   );
-};
+});
 
-export default memo(Header);
+export default Header;
