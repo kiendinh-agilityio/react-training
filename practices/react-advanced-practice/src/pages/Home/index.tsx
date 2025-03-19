@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useCallback, useMemo } from 'react';
 
 // Import useMutation
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -115,25 +115,28 @@ const Home = () => {
     },
   });
 
-  const handleSubmitAuthor = () => {
+  const handleSubmitAuthor = useCallback(() => {
     setIsModalOpen(false);
 
     isUpdate
       ? editAuthor({ id: selectedAuthor.id, author: selectedAuthor })
       : addAuthor(selectedAuthor);
-  };
+  }, [isUpdate, selectedAuthor, editAuthor, addAuthor, setIsModalOpen]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearchTerm(e.target.value);
 
-  const handleDeleteAuthor = () => {
+  const handleDeleteAuthor = useCallback(() => {
     setIsConfirmModalOpen(false);
 
     deleteAuthor(selectedAuthor.id);
-  };
+  }, [deleteAuthor, selectedAuthor.id, setIsConfirmModalOpen]);
 
   // Check if any mutation is currently loading
-  const isLoadingMutation = isAdding || isEditing || isDeleting;
+  const isLoadingMutation = useMemo(
+    () => isAdding || isEditing || isDeleting,
+    [isAdding, isEditing, isDeleting],
+  );
 
   return (
     <Box className="bg-tertiary dark:bg-dark">
@@ -145,7 +148,7 @@ const Home = () => {
             <Box className="flex justify-between items-center mb-7">
               <Heading text="Authors Table" className="dark:text-light" />
               <Flex className="gap-5">
-                <Box className="w-96 relative">
+                <Box className="w-96">
                   <Input
                     name="authorSearch"
                     type="search"
@@ -161,17 +164,19 @@ const Home = () => {
                 </Button>
               </Flex>
             </Box>
-            <AuthorTable
-              authors={filteredAuthors}
-              onEditAuthor={handleShowEditModal}
-              onDeleteAuthor={handleShowConfirmModal}
-            />
+            {filteredAuthors.length > 0 && (
+              <AuthorTable
+                authors={filteredAuthors}
+                onEditAuthor={handleShowEditModal}
+                onDeleteAuthor={handleShowConfirmModal}
+              />
+            )}
             {(isLoading || isLoadingMutation) && (
               <Flex justify="center" align="center" className="py-10">
                 <LoadingSpinner />
               </Flex>
             )}
-            {filteredAuthors.length === 0 && debouncedSearchQuery && !isLoading && (
+            {filteredAuthors.length === 0 && debouncedSearchQuery && (
               <Flex justify="center" align="center" className="mb-5">
                 <Text
                   className="font-bold text-center text-[#a0aec0] py-14"
@@ -189,8 +194,8 @@ const Home = () => {
             />
           </Box>
           <Footer />
-          <Suspense fallback={<LoadingSpinner />}>
-            {isModalOpen && (
+          {isModalOpen && (
+            <Suspense fallback={<LoadingSpinner />}>
               <Modal className="w-[900px] w-2/4 px-9 py-9" onClose={handleCloseModal}>
                 <AuthorForm
                   isUpdate={isUpdate}
@@ -200,15 +205,15 @@ const Home = () => {
                   onSubmit={handleSubmitAuthor}
                 />
               </Modal>
-            )}
-          </Suspense>
-          <Suspense fallback={<LoadingSpinner />}>
-            {isConfirmModalOpen && (
+            </Suspense>
+          )}
+          {isConfirmModalOpen && (
+            <Suspense fallback={<LoadingSpinner />}>
               <Modal className="w-[580px] p-5" onClose={handleCloseModal}>
                 <ConfirmModal onSubmit={handleDeleteAuthor} onClose={handleCloseModal} />
               </Modal>
-            )}
-          </Suspense>
+            </Suspense>
+          )}
         </Flex>
       </Flex>
     </Box>
