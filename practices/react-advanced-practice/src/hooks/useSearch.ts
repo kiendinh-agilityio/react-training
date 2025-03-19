@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 
 // Import hook useDebounce
 import { useDebounce } from '@/hooks';
@@ -13,13 +13,17 @@ export const useSearch = (authors: Author[]) => {
 
   const debouncedSearchQuery = useDebounce(searchTerm);
 
-  const filteredAuthors = authors.filter(
-    (author) =>
-      author.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-      author.email.toLowerCase().includes(debouncedSearchQuery.toLowerCase()),
+  const filteredAuthors = useMemo(
+    () =>
+      authors.filter(
+        (author) =>
+          author.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+          author.email.toLowerCase().includes(debouncedSearchQuery.toLowerCase()),
+      ),
+    [authors, debouncedSearchQuery],
   );
 
-  const clearSearch = () => setSearchTerm('');
+  const clearSearch = useCallback(() => setSearchTerm(''), []);
 
   return {
     searchTerm,
