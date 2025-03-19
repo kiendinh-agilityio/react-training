@@ -1,4 +1,4 @@
-import { memo, useState, cloneElement, ReactElement, useCallback } from 'react';
+import { memo, useState, cloneElement, ReactElement } from 'react';
 
 // Import components
 import { IconWrapper } from '@/components/common/';
@@ -14,8 +14,8 @@ const SidebarItem = memo(
   ({ icon, label, active, href }: SidebarItemProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
-    const handleMouseEnter = useCallback(() => setIsHovered(true), []);
-    const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
 
     const className = `py-2 px-4 text-sm w-[220px] h-[54px] rounded-[15px] font-bold text-base mb-3 ${
       active || isHovered ? 'bg-white text-dark flex items-center cursor-pointer' : ''
