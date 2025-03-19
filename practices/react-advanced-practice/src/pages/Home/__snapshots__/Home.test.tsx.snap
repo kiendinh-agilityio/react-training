@@ -557,7 +557,7 @@ exports[`Home Component renders without crashing 1`] = `
               class="rt-Flex gap-5"
             >
               <div
-                class="rt-Box w-96 relative"
+                class="rt-Box w-96"
               >
                 <div
                   class="rt-Box w-full"
@@ -593,75 +593,6 @@ exports[`Home Component renders without crashing 1`] = `
               >
                 Add New Author
               </button>
-            </div>
-          </div>
-          <div
-            class="rt-TableRoot rt-r-size-2 rt-variant-ghost w-full"
-          >
-            <div
-              class="rt-ScrollAreaRoot"
-              dir="ltr"
-              style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"
-            >
-              <style>
-                [data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
-              </style>
-              <div
-                class="rt-ScrollAreaViewport"
-                data-radix-scroll-area-viewport=""
-                style="overflow-x: scroll; overflow-y: scroll;"
-              >
-                <div
-                  style="min-width: 100%; display: table;"
-                >
-                  <table
-                    class="rt-TableRootTable"
-                  >
-                    <thead
-                      class="rt-TableHeader"
-                    >
-                      <tr
-                        class="rt-TableRow font-bold text-base"
-                      >
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Author
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Function
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Status
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Employed
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell w-32 py-3.5"
-                          scope="col"
-                        />
-                      </tr>
-                    </thead>
-                    <tbody
-                      class="rt-TableBody"
-                    />
-                  </table>
-                </div>
-              </div>
-              <div
-                class="rt-ScrollAreaViewportFocusRing"
-              />
             </div>
           </div>
           <div
