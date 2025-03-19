@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 
 // Import radix ui
 import { Flex } from '@radix-ui/themes';
@@ -10,16 +10,10 @@ interface ModalProps {
 }
 
 const Modal = memo(({ children, className = '', onClose }: ModalProps) => {
-  const handleOverlayClick = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  const handleOverlayClick = () => onClose();
 
-  const handleStopPropagation = useCallback(
-    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      event.stopPropagation();
-    },
-    [],
-  );
+  const handleStopPropagation = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+    event.stopPropagation();
 
   return (
     <Flex
