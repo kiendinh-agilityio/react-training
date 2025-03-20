@@ -546,7 +546,7 @@ exports[`Home Component renders without crashing 1`] = `
           class="rt-Box bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light"
         >
           <div
-            class="rt-Box flex justify-between items-center mb-7"
+            class="rt-Flex rt-r-ai-center rt-r-jc-space-between mb-7"
           >
             <h1
               class="rt-Heading rt-r-size-6 rt-r-weight-bold text-lg font-bold text-dark dark:text-light"

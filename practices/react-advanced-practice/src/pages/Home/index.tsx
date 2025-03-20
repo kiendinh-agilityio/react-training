@@ -145,7 +145,7 @@ const Home = () => {
         <Flex direction="column" justify="between" className="w-full">
           <Header currentPage="Tables" />
           <Box className="bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light">
-            <Box className="flex justify-between items-center mb-7">
+            <Flex justify="between" align="center" className="mb-7">
               <Heading text="Authors Table" className="dark:text-light" />
               <Flex className="gap-5">
                 <Box className="w-96">
@@ -163,7 +163,7 @@ const Home = () => {
                   Add New Author
                 </Button>
               </Flex>
-            </Box>
+            </Flex>
             {filteredAuthors.length > 0 && (
               <AuthorTable
                 authors={filteredAuthors}
