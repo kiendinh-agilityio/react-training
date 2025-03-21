@@ -1,3 +1,6 @@
+import { memo, useCallback } from 'react';
+
+// Import react router
 import { useNavigate } from 'react-router-dom';
 
 // Import radix ui
@@ -24,10 +27,12 @@ interface HeaderProps {
   currentPage: string;
 }
 
-const Header = ({ currentPage }: HeaderProps) => {
+const Header = memo(({ currentPage }: HeaderProps) => {
   const navigate = useNavigate();
 
-  const handleLogout = () => navigate('/signin');
+  const handleLogout = useCallback(() => {
+    navigate('/signin');
+  }, [navigate]);
 
   return (
     <header className="flex justify-between mb-7 px-[21px]">
@@ -53,6 +58,6 @@ const Header = ({ currentPage }: HeaderProps) => {
       </Flex>
     </header>
   );
-};
+});
 
 export default Header;

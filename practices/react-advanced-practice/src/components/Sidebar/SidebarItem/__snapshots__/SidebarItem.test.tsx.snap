@@ -10,6 +10,7 @@ exports[`SidebarItem renders correctly and matches snapshot 1`] = `
       href="/home"
     >
       <div
+        data-active="false"
         data-testid="icon-wrapper"
       >
         <svg

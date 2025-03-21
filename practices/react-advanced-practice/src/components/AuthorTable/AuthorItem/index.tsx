@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 // Import radix-ui
 import { Box, Table } from '@radix-ui/themes';
 
@@ -25,7 +27,7 @@ interface AuthorItemProps {
   onDelete: (id: string) => void;
 }
 
-const AuthorItem = ({ author, onEdit, onDelete }: AuthorItemProps) => {
+const AuthorItem = memo(({ author, onEdit, onDelete }: AuthorItemProps) => {
   const { id, avatarUrl, name, email, roles, position, status, date } = author;
 
   const handleEditClick = () => onEdit(author);
@@ -71,6 +73,6 @@ const AuthorItem = ({ author, onEdit, onDelete }: AuthorItemProps) => {
       </Table.Cell>
     </Table.Row>
   );
-};
+});
 
 export default AuthorItem;

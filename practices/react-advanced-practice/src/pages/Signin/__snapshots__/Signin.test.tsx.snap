@@ -152,9 +152,7 @@ exports[`Signin Component calls handleDownload when the download button is click
           </ul>
         </nav>
         <button
-          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer
-   undefined"
+          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer undefined"
           data-accent-color=""
         >
           Free Download
@@ -250,9 +248,7 @@ exports[`Signin Component calls handleDownload when the download button is click
             </div>
           </div>
           <button
-            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
             data-accent-color=""
           >
             Sign In
@@ -502,9 +498,7 @@ exports[`Signin Component calls handleSigninSubmit with the correct data when th
           </ul>
         </nav>
         <button
-          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer
-   undefined"
+          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer undefined"
           data-accent-color=""
         >
           Free Download
@@ -600,9 +594,7 @@ exports[`Signin Component calls handleSigninSubmit with the correct data when th
             </div>
           </div>
           <button
-            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary opacity-50 cursor-not-allowed
-   mt-9 w-[350px]"
+            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary opacity-50 cursor-not-allowed mt-9 w-[350px]"
             data-accent-color=""
             data-disabled="true"
             disabled=""
@@ -902,9 +894,7 @@ exports[`Signin Component renders without crashing 1`] = `
           </ul>
         </nav>
         <button
-          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer
-   undefined"
+          class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl download cursor-pointer undefined"
           data-accent-color=""
         >
           Free Download
@@ -1000,9 +990,7 @@ exports[`Signin Component renders without crashing 1`] = `
             </div>
           </div>
           <button
-            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer
-   mt-9 w-[350px]"
+            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer mt-9 w-[350px]"
             data-accent-color=""
           >
             Sign In

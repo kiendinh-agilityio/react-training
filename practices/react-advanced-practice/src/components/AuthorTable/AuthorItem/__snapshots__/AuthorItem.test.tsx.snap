@@ -12,7 +12,7 @@ exports[`AuthorItem Component calls onDelete when the Delete button is clicked 1
           scope="row"
         >
           <div
-            class="rt-Box flex gap-[15px] text-left"
+            class="rt-Flex flex gap-[15px] text-left"
           >
             <span
               class="rt-reset rt-AvatarRoot rt-r-size-3 rt-variant-soft rounded-base w-[40px] h-[40px] "
@@ -81,9 +81,7 @@ exports[`AuthorItem Component calls onDelete when the Delete button is clicked 1
             class="rt-Box flex gap-5"
           >
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-gray"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-gray"
               data-accent-color=""
             >
               <svg
@@ -114,9 +112,7 @@ exports[`AuthorItem Component calls onDelete when the Delete button is clicked 1
                Edit
             </button>
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-danger"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-danger"
               data-accent-color=""
             >
               <svg
@@ -166,7 +162,7 @@ exports[`AuthorItem Component calls onEdit when the Edit button is clicked 1`] =
           scope="row"
         >
           <div
-            class="rt-Box flex gap-[15px] text-left"
+            class="rt-Flex flex gap-[15px] text-left"
           >
             <span
               class="rt-reset rt-AvatarRoot rt-r-size-3 rt-variant-soft rounded-base w-[40px] h-[40px] "
@@ -235,9 +231,7 @@ exports[`AuthorItem Component calls onEdit when the Edit button is clicked 1`] =
             class="rt-Box flex gap-5"
           >
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-gray"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-gray"
               data-accent-color=""
             >
               <svg
@@ -268,9 +262,7 @@ exports[`AuthorItem Component calls onEdit when the Edit button is clicked 1`] =
                Edit
             </button>
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-danger"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-danger"
               data-accent-color=""
             >
               <svg
@@ -320,7 +312,7 @@ exports[`AuthorItem Component renders correctly 1`] = `
           scope="row"
         >
           <div
-            class="rt-Box flex gap-[15px] text-left"
+            class="rt-Flex flex gap-[15px] text-left"
           >
             <span
               class="rt-reset rt-AvatarRoot rt-r-size-3 rt-variant-soft rounded-base w-[40px] h-[40px] "
@@ -389,9 +381,7 @@ exports[`AuthorItem Component renders correctly 1`] = `
             class="rt-Box flex gap-5"
           >
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-gray"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-gray"
               data-accent-color=""
             >
               <svg
@@ -422,9 +412,7 @@ exports[`AuthorItem Component renders correctly 1`] = `
                Edit
             </button>
             <button
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-danger"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-danger"
               data-accent-color=""
             >
               <svg

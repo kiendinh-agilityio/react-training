@@ -356,9 +356,7 @@ exports[`Home Component renders without crashing 1`] = `
             Please check our docs
           </p>
           <button
-            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer
-   undefined"
+            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer undefined"
             data-accent-color=""
           >
             DOCUMENTATION
@@ -399,9 +397,7 @@ exports[`Home Component renders without crashing 1`] = `
           >
             <button
               aria-label="Button switch theme"
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   p-2 rounded-full bg-primary text-white"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer p-2 rounded-full bg-primary text-white"
               data-accent-color=""
             >
               <svg
@@ -517,9 +513,7 @@ exports[`Home Component renders without crashing 1`] = `
             </svg>
             <button
               aria-label="Button logout"
-              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer
-   text-gray"
+              class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl transparent cursor-pointer text-gray"
               data-accent-color=""
             >
               <svg
@@ -552,7 +546,7 @@ exports[`Home Component renders without crashing 1`] = `
           class="rt-Box bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light"
         >
           <div
-            class="rt-Box flex justify-between items-center mb-7"
+            class="rt-Flex rt-r-ai-center rt-r-jc-space-between mb-7"
           >
             <h1
               class="rt-Heading rt-r-size-6 rt-r-weight-bold text-lg font-bold text-dark dark:text-light"
@@ -563,7 +557,7 @@ exports[`Home Component renders without crashing 1`] = `
               class="rt-Flex gap-5"
             >
               <div
-                class="rt-Box w-96 relative"
+                class="rt-Box w-96"
               >
                 <div
                   class="rt-Box w-full"
@@ -594,82 +588,11 @@ exports[`Home Component renders without crashing 1`] = `
                 </div>
               </div>
               <button
-                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button  
-    px-[22px] py-2.5 font-bold rounded-xl secondary cursor-pointer
-   undefined"
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl secondary cursor-pointer undefined"
                 data-accent-color=""
               >
                 Add New Author
               </button>
-            </div>
-          </div>
-          <div
-            class="rt-TableRoot rt-r-size-2 rt-variant-ghost w-full"
-          >
-            <div
-              class="rt-ScrollAreaRoot"
-              dir="ltr"
-              style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"
-            >
-              <style>
-                [data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
-              </style>
-              <div
-                class="rt-ScrollAreaViewport"
-                data-radix-scroll-area-viewport=""
-                style="overflow-x: scroll; overflow-y: scroll;"
-              >
-                <div
-                  style="min-width: 100%; display: table;"
-                >
-                  <table
-                    class="rt-TableRootTable"
-                  >
-                    <thead
-                      class="rt-TableHeader"
-                    >
-                      <tr
-                        class="rt-TableRow font-bold text-base"
-                      >
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Author
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Function
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Status
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell py-3.5 text-sm"
-                          scope="col"
-                        >
-                          Employed
-                        </th>
-                        <th
-                          class="rt-TableCell rt-TableColumnHeaderCell w-32 py-3.5"
-                          scope="col"
-                        />
-                      </tr>
-                    </thead>
-                    <tbody
-                      class="rt-TableBody"
-                    />
-                  </table>
-                </div>
-              </div>
-              <div
-                class="rt-ScrollAreaViewportFocusRing"
-              />
             </div>
           </div>
           <div

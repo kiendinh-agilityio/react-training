@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 // Import types
 import { Author } from '@/types';
@@ -12,27 +12,27 @@ export const useModal = () => {
   const [selectedAuthor, setSelectedAuthor] = useState<Author>(profileAuthor);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
 
-  const handleShowAddModal = () => {
+  const handleShowAddModal = useCallback(() => {
     setIsUpdate(false);
     setSelectedAuthor(profileAuthor);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const handleShowEditModal = (author: Author) => {
+  const handleShowEditModal = useCallback((author: Author) => {
     setIsUpdate(true);
     setSelectedAuthor(author);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const handleShowConfirmModal = (authorId: string) => {
+  const handleShowConfirmModal = useCallback((authorId: string) => {
     setSelectedAuthor((prev) => ({ ...prev, id: authorId }));
     setIsConfirmModalOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setIsConfirmModalOpen(false);
-  };
+  }, []);
 
   return {
     isModalOpen,

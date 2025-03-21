@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 // Import radix ui
 import { Flex } from '@radix-ui/themes';
 
@@ -7,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal = ({ children, className, onClose }: ModalProps) => {
+const Modal = memo(({ children, className = '', onClose }: ModalProps) => {
   const handleOverlayClick = () => onClose();
 
   const handleStopPropagation = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
@@ -29,6 +31,6 @@ const Modal = ({ children, className, onClose }: ModalProps) => {
       </Flex>
     </Flex>
   );
-};
+});
 
 export default Modal;

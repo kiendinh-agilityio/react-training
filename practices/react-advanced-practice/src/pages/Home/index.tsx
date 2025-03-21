@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useCallback, useMemo } from 'react';
 
 // Import useMutation
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -10,15 +10,7 @@ import { Box, Flex } from '@radix-ui/themes';
 import { SearchIcon } from '@/components/common/Icons';
 
 // import common components
-import {
-  Logo,
-  Heading,
-  Input,
-  Button,
-  LoadingSpinner,
-  Text,
-  Toast,
-} from '@/components/common';
+import { Heading, Input, Button, LoadingSpinner, Text, Toast } from '@/components/common';
 
 // Import components
 import { Sidebar, AuthorTable } from '@/components';
@@ -30,14 +22,7 @@ import Header from './Header';
 import { Footer } from '@/layouts';
 
 // Import types
-import {
-  ButtonVariant,
-  TextSize,
-  Author,
-  Notification,
-  QueryKey,
-  ThemeMode,
-} from '@/types';
+import { ButtonVariant, TextSize, Author, Notification, QueryKey } from '@/types';
 
 // Import services
 import {
@@ -52,9 +37,6 @@ const Modal = lazy(() => import('@/components/common/Modal'));
 const AuthorForm = lazy(() => import('@/components/AuthorForm'));
 const ConfirmModal = lazy(() => import('@/components/ConfirmModal'));
 
-// Import Zustand store
-import { useThemeStore } from '@/stores';
-
 // Import hooks
 import { useToast, useSearch, useModal } from '@/hooks';
 
@@ -63,8 +45,6 @@ import { MESSAGE_SUCCESS, MESSAGE_ERROR } from '@/constants';
 
 const Home = () => {
   const queryClient = useQueryClient();
-
-  const { theme } = useThemeStore();
 
   const { toastMessage, toastType, isToastOpen, handleShowToast, handleCloseToast } =
     useToast();
@@ -135,49 +115,40 @@ const Home = () => {
     },
   });
 
-  const handleSubmitAuthor = () => {
+  const handleSubmitAuthor = useCallback(() => {
     setIsModalOpen(false);
 
     isUpdate
       ? editAuthor({ id: selectedAuthor.id, author: selectedAuthor })
       : addAuthor(selectedAuthor);
-  };
+  }, [isUpdate, selectedAuthor, editAuthor, addAuthor, setIsModalOpen]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearchTerm(e.target.value);
 
-  const handleDeleteAuthor = () => {
+  const handleDeleteAuthor = useCallback(() => {
     setIsConfirmModalOpen(false);
 
     deleteAuthor(selectedAuthor.id);
-  };
+  }, [deleteAuthor, selectedAuthor.id, setIsConfirmModalOpen]);
 
   // Check if any mutation is currently loading
-  const isLoadingMutation = isAdding || isEditing || isDeleting;
+  const isLoadingMutation = useMemo(
+    () => isAdding || isEditing || isDeleting,
+    [isAdding, isEditing, isDeleting],
+  );
 
   return (
     <Box className="bg-tertiary dark:bg-dark">
       <Flex className="min-h-screen pt-[30px] pr-[22px] pb-[23px]">
-        <Box>
-          <Flex
-            justify="center"
-            align="center"
-            className="mb-[22px] gap-12 gradient-border pb-7"
-          >
-            <Logo
-              color={theme === ThemeMode.Dark ? 'secondary' : 'primary'}
-              href="/home"
-            />
-          </Flex>
-          <Sidebar />
-        </Box>
+        <Sidebar />
         <Flex direction="column" justify="between" className="w-full">
           <Header currentPage="Tables" />
           <Box className="bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light">
-            <Box className="flex justify-between items-center mb-7">
+            <Flex justify="between" align="center" className="mb-7">
               <Heading text="Authors Table" className="dark:text-light" />
               <Flex className="gap-5">
-                <Box className="w-96 relative">
+                <Box className="w-96">
                   <Input
                     name="authorSearch"
                     type="search"
@@ -192,18 +163,20 @@ const Home = () => {
                   Add New Author
                 </Button>
               </Flex>
-            </Box>
-            <AuthorTable
-              authors={filteredAuthors}
-              onEditAuthor={handleShowEditModal}
-              onDeleteAuthor={handleShowConfirmModal}
-            />
+            </Flex>
+            {filteredAuthors.length > 0 && (
+              <AuthorTable
+                authors={filteredAuthors}
+                onEditAuthor={handleShowEditModal}
+                onDeleteAuthor={handleShowConfirmModal}
+              />
+            )}
             {(isLoading || isLoadingMutation) && (
               <Flex justify="center" align="center" className="py-10">
                 <LoadingSpinner />
               </Flex>
             )}
-            {filteredAuthors.length === 0 && debouncedSearchQuery && !isLoading && (
+            {filteredAuthors.length === 0 && debouncedSearchQuery && (
               <Flex justify="center" align="center" className="mb-5">
                 <Text
                   className="font-bold text-center text-[#a0aec0] py-14"
@@ -221,8 +194,8 @@ const Home = () => {
             />
           </Box>
           <Footer />
-          <Suspense fallback={<LoadingSpinner />}>
-            {isModalOpen && (
+          {isModalOpen && (
+            <Suspense fallback={<LoadingSpinner />}>
               <Modal className="w-[900px] w-2/4 px-9 py-9" onClose={handleCloseModal}>
                 <AuthorForm
                   isUpdate={isUpdate}
@@ -232,15 +205,15 @@ const Home = () => {
                   onSubmit={handleSubmitAuthor}
                 />
               </Modal>
-            )}
-          </Suspense>
-          <Suspense fallback={<LoadingSpinner />}>
-            {isConfirmModalOpen && (
+            </Suspense>
+          )}
+          {isConfirmModalOpen && (
+            <Suspense fallback={<LoadingSpinner />}>
               <Modal className="w-[580px] p-5" onClose={handleCloseModal}>
                 <ConfirmModal onSubmit={handleDeleteAuthor} onClose={handleCloseModal} />
               </Modal>
-            )}
-          </Suspense>
+            </Suspense>
+          )}
         </Flex>
       </Flex>
     </Box>

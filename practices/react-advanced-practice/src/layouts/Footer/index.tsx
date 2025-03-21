@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Box } from '@radix-ui/themes';
 
 // Import constants
@@ -9,7 +10,7 @@ import { currentYear } from '@/utils';
 // Import components
 import { Link, Text } from '@/components/common';
 
-const Footer = () => (
+const Footer = memo(() => (
   <footer className="flex justify-between text-xs text-base">
     <Text className="flex gap-1">
       @ {currentYear}, Made with ❤️ by{' '}
@@ -34,6 +35,6 @@ const Footer = () => (
       </ul>
     </nav>
   </footer>
-);
+));
 
 export default Footer;
