@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 
 // Import radix ui
 import { Box, Flex } from '@radix-ui/themes';
@@ -22,7 +22,7 @@ interface ToastProps {
   onClose: () => void;
 }
 
-const Toast = ({ type, message, isOpen, onClose }: ToastProps) => {
+const Toast = memo(({ type, message, isOpen, onClose }: ToastProps) => {
   const countTime = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -56,6 +56,6 @@ const Toast = ({ type, message, isOpen, onClose }: ToastProps) => {
       </Button>
     </Flex>
   ) : null;
-};
+});
 
 export default Toast;
