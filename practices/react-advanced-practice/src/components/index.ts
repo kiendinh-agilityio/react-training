@@ -9,3 +9,4 @@ export { default as ConfirmModal } from './ConfirmModal';
 export { default as SwitchTheme } from './SwitchTheme';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as AuthForm } from './AuthForm';
+export { default as AuthorToolbar } from './AuthorToolbar';
