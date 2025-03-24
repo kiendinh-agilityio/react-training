@@ -6,14 +6,11 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 // Import components from Radix UI
 import { Box, Flex } from '@radix-ui/themes';
 
-// Import icons
-import { SearchIcon } from '@/components/common/Icons';
-
 // import common components
-import { Heading, Input, Button, LoadingSpinner, Text, Toast } from '@/components/common';
+import { LoadingSpinner, Text, Toast } from '@/components/common';
 
 // Import components
-import { Sidebar, AuthorTable } from '@/components';
+import { Sidebar, AuthorTable, AuthorToolbar } from '@/components';
 
 // Import header for home page
 import Header from './Header';
@@ -22,7 +19,7 @@ import Header from './Header';
 import { Footer } from '@/layouts';
 
 // Import types
-import { ButtonVariant, TextSize, Author, Notification, QueryKey } from '@/types';
+import { TextSize, Author, Notification, QueryKey } from '@/types';
 
 // Import services
 import {
@@ -123,8 +120,12 @@ const Home = () => {
       : addAuthor(selectedAuthor);
   }, [isUpdate, selectedAuthor, editAuthor, addAuthor, setIsModalOpen]);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchTerm(e.target.value);
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(e.target.value);
+    },
+    [setSearchTerm],
+  );
 
   const handleDeleteAuthor = useCallback(() => {
     setIsConfirmModalOpen(false);
@@ -145,25 +146,11 @@ const Home = () => {
         <Flex direction="column" justify="between" className="w-full">
           <Header currentPage="Tables" />
           <Box className="bg-white dark:bg-dark min-h-[88vh] mb-7 rounded-[15px] px-[21px] py-7 relative dark:border dark:border-light">
-            <Flex justify="between" align="center" className="mb-7">
-              <Heading text="Authors Table" className="dark:text-light" />
-              <Flex className="gap-5">
-                <Box className="w-96">
-                  <Input
-                    name="authorSearch"
-                    type="search"
-                    placeholder="Search by name or email..."
-                    leftIcon={<SearchIcon className="cursor-pointer" />}
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    className="dark:placeholder:bg-dark dark:text-light"
-                  />
-                </Box>
-                <Button variant={ButtonVariant.Secondary} onClick={handleShowAddModal}>
-                  Add New Author
-                </Button>
-              </Flex>
-            </Flex>
+            <AuthorToolbar
+              searchTerm={searchTerm}
+              onSearchChange={handleSearchChange}
+              onAddClick={handleShowAddModal}
+            />
             {filteredAuthors.length > 0 && (
               <AuthorTable
                 authors={filteredAuthors}
