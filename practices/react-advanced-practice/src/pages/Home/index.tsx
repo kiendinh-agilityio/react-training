@@ -57,7 +57,6 @@ const Home = () => {
     handleShowEditModal,
     handleCloseModal,
     handleShowConfirmModal,
-    setSelectedAuthor,
   } = useModal();
 
   // Query to fetch all authors from the API
@@ -112,13 +111,16 @@ const Home = () => {
     },
   });
 
-  const handleSubmitAuthor = useCallback(() => {
-    setIsModalOpen(false);
+  const handleSubmitAuthor = useCallback(
+    (formData: Author) => {
+      setIsModalOpen(false);
 
-    isUpdate
-      ? editAuthor({ id: selectedAuthor.id, author: selectedAuthor })
-      : addAuthor(selectedAuthor);
-  }, [isUpdate, selectedAuthor, editAuthor, addAuthor, setIsModalOpen]);
+      isUpdate
+        ? editAuthor({ id: selectedAuthor.id, author: formData })
+        : addAuthor(formData);
+    },
+    [isUpdate, selectedAuthor.id, editAuthor, addAuthor, setIsModalOpen],
+  );
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -188,7 +190,6 @@ const Home = () => {
                   isUpdate={isUpdate}
                   selectedAuthor={selectedAuthor}
                   closeModal={handleCloseModal}
-                  onChange={setSelectedAuthor}
                   onSubmit={handleSubmitAuthor}
                 />
               </Modal>
