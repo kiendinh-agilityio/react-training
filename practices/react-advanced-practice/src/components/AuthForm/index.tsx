@@ -1,14 +1,28 @@
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+// Import react router dom
+import { useNavigate } from 'react-router-dom';
+
+// Import react hook form
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+
+// Import lib radix
 import { Flex } from '@radix-ui/themes';
+
+// Import common components
 import { Input, Button, Text, Link } from '@/components/common';
+
+// Import common icons
 import {
   ShowPasswordIcon,
   HidePasswordIcon,
   LoadingIcon,
 } from '@/components/common/Icons';
+
+// Import stores
 import { useAuthStore } from '@/stores';
+
+// Import constants
 import { REGEX, MESSAGE_ERROR } from '@/constants';
 
 interface AuthFormInputs {
@@ -40,7 +54,6 @@ const AuthForm = ({
 
   const {
     control,
-    trigger,
     handleSubmit,
     formState: { errors },
   } = useForm<AuthFormInputs>({
@@ -49,37 +62,8 @@ const AuthForm = ({
       email: '',
       password: '',
     },
+    mode: 'onBlur',
   });
-
-  /**
-   * Creates an event handler for the blur event to validate a specific field.
-   * @param fieldName - The name of the field to validate.
-   * @param trigger - The react-hook-form trigger function.
-   * @returns A function that triggers validation for the specified field.
-   */
-  const handleFieldBlur =
-    (
-      fieldName: keyof AuthFormInputs,
-      trigger: (fieldName: keyof AuthFormInputs) => void,
-    ) =>
-    () =>
-      trigger(fieldName);
-
-  /**
-   * Handles the onChange event for form inputs and triggers validation.
-   * @param fieldName - The name of the field to validate.
-   * @param fieldOnChange - The react-hook-form onChange handler for the field.
-   * @returns A function that handles the input's onChange event.
-   */
-  const handleFieldChange =
-    (fieldName: keyof AuthFormInputs, fieldOnChange: (value: string) => void) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-      fieldOnChange(value);
-      trigger(fieldName);
-
-      fieldName === 'password' && value.match(REGEX.PASSWORD) && setErrorMessage('');
-    };
 
   // Handle Form Submit
   const handleFormSubmit: SubmitHandler<AuthFormInputs> = async (data) => {
@@ -100,6 +84,7 @@ const AuthForm = ({
       }, 1500);
     } catch (error) {
       setIsLoading(false);
+
       setErrorMessage(
         type === 'signin' ? MESSAGE_ERROR.INVALID_SIGNIN : MESSAGE_ERROR.SIGNUP_FAILED,
       );
@@ -130,8 +115,6 @@ const AuthForm = ({
                 placeholder="Your full name"
                 type="text"
                 errorMessage={errors.name?.message}
-                onChange={handleFieldChange('name', field.onChange)}
-                onBlur={handleFieldBlur('name', trigger)}
               />
             )}
           />
@@ -156,8 +139,6 @@ const AuthForm = ({
               placeholder="Your email address"
               type="email"
               errorMessage={errors.email?.message}
-              onChange={handleFieldChange('email', field.onChange)}
-              onBlur={handleFieldBlur('email', trigger)}
             />
           )}
         />
@@ -181,8 +162,6 @@ const AuthForm = ({
               placeholder="Your password"
               type={showPassword ? 'text' : 'password'}
               errorMessage={errors.password?.message}
-              onChange={handleFieldChange('password', field.onChange)}
-              onBlur={handleFieldBlur('password', trigger)}
               rightIcon={
                 <button
                   type="button"
