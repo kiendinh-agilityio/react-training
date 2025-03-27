@@ -260,12 +260,14 @@ exports[`AuthorForm should render correctly with default props 1`] = `
       class="rt-Flex rt-r-ai-center rt-r-jc-center gap-6 mt-6"
     >
       <button
+        aria-label="Button"
         class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl primary cursor-pointer w-[150px]"
         data-accent-color=""
       >
         Submit
       </button>
       <button
+        aria-label="Button"
         class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl tertiary cursor-pointer w-[150px]"
         data-accent-color=""
       >
