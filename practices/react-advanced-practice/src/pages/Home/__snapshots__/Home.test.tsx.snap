@@ -356,7 +356,8 @@ exports[`Home Component renders without crashing 1`] = `
             Please check our docs
           </p>
           <button
-            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer undefined"
+            aria-label="Button"
+            class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl link cursor-pointer "
             data-accent-color=""
           >
             DOCUMENTATION
@@ -588,7 +589,8 @@ exports[`Home Component renders without crashing 1`] = `
                 </div>
               </div>
               <button
-                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl secondary cursor-pointer undefined"
+                aria-label="Button"
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button px-[22px] py-2.5 font-bold rounded-xl secondary cursor-pointer "
                 data-accent-color=""
               >
                 Add New Author
