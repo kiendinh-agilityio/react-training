@@ -33,40 +33,19 @@ interface AuthorsFormProps {
   isUpdate: boolean;
   selectedAuthor: Author;
   closeModal: () => void;
-  onChange: (author: Author) => void;
-  onSubmit: () => void;
+  onSubmit: (data: Author) => void;
 }
 
 const AuthorForm = memo(
-  ({ isUpdate, selectedAuthor, closeModal, onChange, onSubmit }: AuthorsFormProps) => {
+  ({ isUpdate, selectedAuthor, closeModal, onSubmit }: AuthorsFormProps) => {
     const {
       control,
       handleSubmit,
-      setValue,
-      getValues,
       formState: { errors, isDirty, dirtyFields },
     } = useForm<Author>({
       defaultValues: selectedAuthor,
       mode: 'onBlur',
     });
-
-    const handleFormAction = useCallback(
-      (name: keyof Author, value: string) => {
-        setValue(name, value, { shouldValidate: true, shouldDirty: true });
-        onChange({ ...getValues(), [name]: value });
-      },
-      [setValue, getValues, onChange],
-    );
-
-    // Handle input fields change
-    const handleFieldChange = useCallback(
-      (name: keyof Author) =>
-        (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-          const value = e.target.value;
-          handleFormAction(name, value);
-        },
-      [handleFormAction],
-    );
 
     const handleValidateDate = useCallback(
       (value: string): string | boolean =>
@@ -104,8 +83,6 @@ const AuthorForm = memo(
                 type="text"
                 placeholder="Please enter name"
                 errorMessage={errors.name?.message}
-                onChange={handleFieldChange('name')}
-                onBlur={handleFieldChange('name')}
               />
             )}
           />
@@ -126,8 +103,6 @@ const AuthorForm = memo(
                 type="email"
                 placeholder="Please enter email address"
                 errorMessage={errors.email?.message}
-                onChange={handleFieldChange('email')}
-                onBlur={handleFieldChange('email')}
               />
             )}
           />
@@ -148,8 +123,6 @@ const AuthorForm = memo(
                 type="text"
                 placeholder="Please enter link image"
                 errorMessage={errors.avatarUrl?.message}
-                onChange={handleFieldChange('avatarUrl')}
-                onBlur={handleFieldChange('avatarUrl')}
               />
             )}
           />
@@ -166,8 +139,6 @@ const AuthorForm = memo(
                 type="date"
                 value={field.value || today}
                 errorMessage={errors.date?.message}
-                onChange={handleFieldChange('date')}
-                onBlur={handleFieldChange('date')}
               />
             )}
           />
@@ -176,39 +147,21 @@ const AuthorForm = memo(
               name="roles"
               control={control}
               render={({ field }) => (
-                <Select
-                  label="Roles"
-                  {...field}
-                  optionsList={ROLES}
-                  onChange={handleFieldChange('roles')}
-                  onBlur={handleFieldChange('roles')}
-                />
+                <Select label="Roles" {...field} optionsList={ROLES} />
               )}
             />
             <Controller
               name="position"
               control={control}
               render={({ field }) => (
-                <Select
-                  label="Positions"
-                  {...field}
-                  optionsList={POSITIONS}
-                  onChange={handleFieldChange('position')}
-                  onBlur={handleFieldChange('position')}
-                />
+                <Select label="Positions" {...field} optionsList={POSITIONS} />
               )}
             />
             <Controller
               name="status"
               control={control}
               render={({ field }) => (
-                <Select
-                  label="Status"
-                  {...field}
-                  optionsList={STATUS}
-                  onChange={handleFieldChange('status')}
-                  onBlur={handleFieldChange('status')}
-                />
+                <Select label="Status" {...field} optionsList={STATUS} />
               )}
             />
           </Grid>

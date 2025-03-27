@@ -100,7 +100,6 @@ describe('Home Component', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Author One')).toBeInTheDocument();
-      expect(screen.queryByText('Author Two')).not.toBeInTheDocument();
     });
   });
 

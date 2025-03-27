@@ -1,4 +1,4 @@
-import { memo, useEffect, useCallback } from 'react';
+import { memo, useEffect } from 'react';
 
 // Import common icons
 import { MoonIcon, SunIcon } from '@/components/common/Icons';
@@ -13,21 +13,17 @@ import { ButtonVariant, ThemeMode } from '@/types';
 import { useThemeStore } from '@/stores';
 
 const SwitchTheme = memo(() => {
-  const { theme, setTheme } = useThemeStore();
+  const { theme, toggleTheme } = useThemeStore();
 
   // Update theme when it changes
   useEffect(() => {
     document.documentElement.classList.toggle(ThemeMode.Dark, theme === ThemeMode.Dark);
   }, [theme]);
 
-  const handleToggleTheme = useCallback(() => {
-    setTheme(theme === ThemeMode.Light ? ThemeMode.Dark : ThemeMode.Light);
-  }, [theme, setTheme]);
-
   return (
     <Button
       variant={ButtonVariant.Transparent}
-      onClick={handleToggleTheme}
+      onClick={toggleTheme}
       className="p-2 rounded-full bg-primary text-white"
       ariaLabel="Button switch theme"
     >

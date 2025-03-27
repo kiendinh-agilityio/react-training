@@ -57,7 +57,6 @@ const Home = () => {
     handleShowEditModal,
     handleCloseModal,
     handleShowConfirmModal,
-    setSelectedAuthor,
   } = useModal();
 
   // Query to fetch all authors from the API
@@ -72,8 +71,11 @@ const Home = () => {
   // Use mutation for adding a new author
   const { mutate: addAuthor, isPending: isAdding } = useMutation({
     mutationFn: addNewAuthor,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: [QueryKey.Authors] });
+    onSuccess: async (newAuthor) => {
+      queryClient.setQueryData([QueryKey.Authors], (oldAuthors: Author[] = []) => [
+        ...oldAuthors,
+        newAuthor,
+      ]);
 
       handleShowToast(MESSAGE_SUCCESS.ADD_AUTHOR, Notification.Success);
     },
@@ -89,8 +91,13 @@ const Home = () => {
     { id: string; author: Author }
   >({
     mutationFn: ({ id, author }) => editAuthorById(id, author),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: [QueryKey.Authors] });
+    onSuccess: (updatedAuthor) => {
+      // Update the query data directly instead of invalidating
+      queryClient.setQueryData<Author[]>([QueryKey.Authors], (oldAuthors = []) =>
+        oldAuthors.map((author) =>
+          author.id === updatedAuthor.id ? updatedAuthor : author,
+        ),
+      );
 
       handleShowToast(MESSAGE_SUCCESS.EDIT_AUTHOR, Notification.Success);
     },
@@ -100,10 +107,17 @@ const Home = () => {
   });
 
   // Use mutation for delete an author
-  const { mutate: deleteAuthor, isPending: isDeleting } = useMutation({
+  const { mutate: deleteAuthor, isPending: isDeleting } = useMutation<
+    Author,
+    Error,
+    string
+  >({
     mutationFn: deleteAuthorById,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: [QueryKey.Authors] });
+    onSuccess: (_, deletedAuthorId) => {
+      // Update the query data directly instead of invalidating
+      queryClient.setQueryData<Author[]>([QueryKey.Authors], (oldAuthors = []) =>
+        oldAuthors.filter((author) => author.id !== deletedAuthorId),
+      );
 
       handleShowToast(MESSAGE_SUCCESS.DELETE_AUTHOR, Notification.Success);
     },
@@ -112,13 +126,16 @@ const Home = () => {
     },
   });
 
-  const handleSubmitAuthor = useCallback(() => {
-    setIsModalOpen(false);
+  const handleSubmitAuthor = useCallback(
+    (formData: Author) => {
+      setIsModalOpen(false);
 
-    isUpdate
-      ? editAuthor({ id: selectedAuthor.id, author: selectedAuthor })
-      : addAuthor(selectedAuthor);
-  }, [isUpdate, selectedAuthor, editAuthor, addAuthor, setIsModalOpen]);
+      isUpdate
+        ? editAuthor({ id: selectedAuthor.id, author: formData })
+        : addAuthor(formData);
+    },
+    [isUpdate, selectedAuthor.id, editAuthor, addAuthor, setIsModalOpen],
+  );
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -188,7 +205,6 @@ const Home = () => {
                   isUpdate={isUpdate}
                   selectedAuthor={selectedAuthor}
                   closeModal={handleCloseModal}
-                  onChange={setSelectedAuthor}
                   onSubmit={handleSubmitAuthor}
                 />
               </Modal>
