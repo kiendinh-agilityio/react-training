@@ -99,7 +99,7 @@ exports[`AuthorForm should render correctly with default props 1`] = `
           <input
             class="w-full text-regular focus:outline-none text-dark placeholder:text-base dark:bg-dark dark:bg-light"
             name="date"
-            placeholder=""
+            placeholder="xx/mm/yy"
             type="date"
             value="26/10/24"
           />
