@@ -19,10 +19,10 @@ const Button = memo(
   ({
     children,
     variant = ButtonVariant.Primary,
-    isDisabled,
-    className,
+    isDisabled = false,
+    className = '',
     onClick,
-    ariaLabel,
+    ariaLabel = 'Button',
   }: ButtonProps) => {
     const baseClass = `px-[22px] py-2.5 font-bold rounded-xl ${
       isDisabled ? 'primary opacity-50 cursor-not-allowed' : `${variant} cursor-pointer`

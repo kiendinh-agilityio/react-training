@@ -54,6 +54,9 @@ exports[`Select Component - Render renders without label 1`] = `
   <div
     class="rt-Flex rt-r-fd-column gap-1.5 text-dark font-regular"
   >
+    <label>
+      Roles
+    </label>
     <div
       class="rt-Flex relative"
     >

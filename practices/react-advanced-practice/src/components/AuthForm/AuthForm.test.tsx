@@ -67,7 +67,9 @@ describe('AuthForm Component', () => {
 
   it('shows an error when submitting an empty form', async () => {
     const { asFragment } = renderComponent();
-    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
+
+    fireEvent.click(screen.getByText('Sign In'));
+
     await waitFor(() => {
       expect(screen.getByText(MESSAGE_ERROR.REQUIRED_ERROR('Email'))).toBeInTheDocument();
       expect(
@@ -99,7 +101,8 @@ describe('AuthForm Component', () => {
 
   it('shows an error when name is empty in signup', async () => {
     renderComponent('signup');
-    fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
+    fireEvent.click(screen.getByText('Sign Up'));
+
     await waitFor(() => {
       expect(screen.getByText(MESSAGE_ERROR.REQUIRED_ERROR('Name'))).toBeInTheDocument();
     });
@@ -117,7 +120,7 @@ describe('AuthForm Component', () => {
 
     expect(asFragment()).toMatchSnapshot();
 
-    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
+    fireEvent.click(screen.getByText('Sign In'));
 
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -143,7 +146,7 @@ describe('AuthForm Component', () => {
     fireEvent.input(screen.getByPlaceholderText('Your password'), {
       target: { value: 'Password@123' },
     });
-    fireEvent.click(screen.getByRole('button', { name: /sign up/i }));
+    fireEvent.click(screen.getByText('Sign Up'));
 
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith({
@@ -165,7 +168,7 @@ describe('AuthForm Component', () => {
     fireEvent.input(screen.getByPlaceholderText('Your password'), {
       target: { value: 'Password@123' },
     });
-    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
+    fireEvent.click(screen.getByText('Sign In'));
 
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledTimes(1);
@@ -188,7 +191,7 @@ describe('AuthForm Component', () => {
     fireEvent.input(screen.getByPlaceholderText('Your password'), {
       target: { value: 'Password@123' },
     });
-    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
+    fireEvent.click(screen.getByText('Sign In'));
 
     await waitFor(() => {
       expect(screen.getByText(MESSAGE_ERROR.INVALID_SIGNIN)).toBeInTheDocument();

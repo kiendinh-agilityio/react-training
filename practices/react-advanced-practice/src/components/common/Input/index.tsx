@@ -21,7 +21,7 @@ const Input = memo(
   forwardRef<HTMLInputElement, InputProps>(
     (
       {
-        value,
+        value = '',
         name,
         placeholder,
         type = 'text',
@@ -29,8 +29,8 @@ const Input = memo(
         rightIcon,
         onChange,
         onBlur,
-        errorMessage,
-        defaultValue,
+        errorMessage = '',
+        defaultValue = '',
         className = '',
       },
       ref,

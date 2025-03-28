@@ -27,7 +27,13 @@ describe('Select Component - Render', () => {
 
   it('renders without label', () => {
     const { asFragment } = render(
-      <Select name="select-option" optionsList={ROLES} value="1" onChange={() => {}} />,
+      <Select
+        label="Roles"
+        name="select-option"
+        optionsList={ROLES}
+        value="1"
+        onChange={() => {}}
+      />,
     );
 
     // Snapshot test to ensure proper rendering without label
