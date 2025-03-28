@@ -18,7 +18,7 @@ interface SelectProps {
 
 const Select = memo(
   forwardRef<HTMLSelectElement, SelectProps>(
-    ({ name, optionsList, label, value, onChange }: SelectProps, ref) => {
+    ({ name, optionsList, label, value = '', onChange }: SelectProps, ref) => {
       const renderOptions = (options: OptionsType) =>
         options.map((option) => (
           <option key={option.value} value={option.value}>
