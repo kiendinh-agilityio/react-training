@@ -139,6 +139,7 @@ const AuthorForm = memo(
                 type="date"
                 value={field.value || today}
                 errorMessage={errors.date?.message}
+                placeholder="xx/mm/yy"
               />
             )}
           />
