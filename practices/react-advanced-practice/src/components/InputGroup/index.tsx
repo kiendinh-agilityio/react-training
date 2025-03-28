@@ -10,11 +10,11 @@ import { Input, Text } from '@/components/common';
 import { TextSize } from '@/types';
 
 interface InputGroupProps {
-  label?: string;
+  label: string;
   name: string;
   type?: 'search' | 'text' | 'email' | 'password' | 'date';
   value: string;
-  placeholder?: string;
+  placeholder: string;
   errorMessage?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -29,7 +29,7 @@ const InputGroup = memo(
         type = 'text',
         value,
         placeholder = '',
-        errorMessage,
+        errorMessage = '',
         onChange,
         onBlur,
       },
